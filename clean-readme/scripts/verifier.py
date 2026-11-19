@@ -14,7 +14,7 @@ import subprocess
 import sys
 import unicodedata
 
-VERSION_REGLES = 1
+VERSION_REGLES = 2
 MAX_LIGNES = 200
 
 # Titres de niveau 2 autorisés, par langue.
@@ -79,7 +79,7 @@ REMPLACEMENTS = {"«": '"', "»": '"', "“": '"', "”": '"', "„": '"',
                  "→": "->", "←": "<-", "≤": "<=", "≥": ">=", "×": "x",
                  "≠": "!=", "•": "-"}
 
-MOTS_A_EVITER = ["puissant", "puissante", "simple", "facile", "simplement", "il suffit de",
+MOTS_A_EVITER = ["puissant", "puissante", "facile", "simplement", "il suffit de",
                  "robuste", "moderne", "incontournable", "révolutionnaire",
                  "powerful", "easy", "simply", "robust", "modern", "revolutionary", "seamless"]
 
@@ -100,10 +100,8 @@ RE_ATTRIBUTION = re.compile(
     r"(ia|intelligence artificielle|chatbot|assistant)\b"
     r"|\b(generated|written|co-?authored)\s+(by|with)\s+(an?\s+)?(ai|llm|assistant)\b", re.I)
 RE_MARQUES_IA = re.compile(r"\b(claude|anthropic|chatgpt|openai|copilot|gemini|llm)\b", re.I)
-RE_ETAT_FR = re.compile(r"^>\s*\*\*État\*\*\s*:\s*(.+?)\s*\(mis à jour le (\d{4}-\d{2}-\d{2})"
-                        r"(?:,\s*version\s+\S+\s+du\s+\d{4}-\d{2}-\d{2})?\)\.?\s*(.*)$")
-RE_ETAT_EN = re.compile(r"^>\s*\*\*Status\*\*\s*:\s*(.+?)\s*\(updated (\d{4}-\d{2}-\d{2})"
-                        r"(?:,\s*version\s+\S+\s+of\s+\d{4}-\d{2}-\d{2})?\)\.?\s*(.*)$")
+RE_ETAT_FR = re.compile(r"^>\s*\*\*État\*\*\s*:\s*(.+?)(?:\s*\(version\s+\S+\s+du\s+\d{4}-\d{2}-\d{2}\))?\s*\.(?:\s+(.*))?$")
+RE_ETAT_EN = re.compile(r"^>\s*\*\*Status\*\*\s*:\s*(.+?)(?:\s*\(version\s+\S+\s+of\s+\d{4}-\d{2}-\d{2}\))?\s*\.(?:\s+(.*))?$")
 
 IP_EXEMPLES = ("127.", "0.0.0.0", "255.", "192.0.2.", "198.51.100.", "203.0.113.",
                "8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1")
@@ -370,8 +368,6 @@ def lire_commentaire(rapport, lignes):
         elif int(v) < VERSION_REGLES:
             rapport.alerte("README.md", i, "commentaire",
                            f"règles en version {v}, version actuelle {VERSION_REGLES} : proposer une refonte")
-        if "licence" in valeurs and valeurs["licence"] != "non":
-            rapport.erreur("README.md", i, "commentaire", "la seule valeur permise pour licence est 'non'")
         return valeurs
     return {}
 
@@ -473,7 +469,7 @@ def verifier_etat(rapport, decoupe, langue):
             if m.group(1) not in ETATS[langue]:
                 rapport.erreur("README.md", num, "etat",
                                f"état inconnu '{m.group(1)}', valeurs permises : " + ", ".join(ETATS[langue]))
-            elif m.group(1) in ETATS_A_PRECISER and not m.group(3).strip():
+            elif m.group(1) in ETATS_A_PRECISER and not (m.group(2) or "").strip():
                 rapport.erreur("README.md", num, "etat", f"l'état '{m.group(1)}' demande une précision")
             return
     rapport.erreur("README.md", 1, "etat", f"bloc d'état absent (ligne commençant par '> {libelle}')")

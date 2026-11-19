@@ -1,9 +1,9 @@
-<!-- clean-readme: type=outil; langue=fr; v=1 -->
+<!-- clean-readme: type=outil; langue=fr; v=2 -->
 # <Nom lisible de l'outil>
 
 <Ce que fait l'outil, pour qui, et ce qui le distingue, en 2 à 4 phrases.>
 
-> **État** : <État> (mis à jour le <AAAA-MM-JJ>, version <X.Y.Z> du <AAAA-MM-JJ>).
+> **État** : <État> (version <X.Y.Z> du <AAAA-MM-JJ>).
 
 ## Sommaire
 
@@ -13,7 +13,6 @@
 - [Configuration et options](#configuration-et-options)
 - [Contribuer](#contribuer)
 - [Limites](#limites)
-- [Crédits](#crédits)
 - [Licence](#licence)
 
 ## Installation
@@ -55,10 +54,6 @@
 
 - <Restriction connue>
 
-## Crédits
-
-- <Auteurs, projets réutilisés avec leur licence>
-
 ## Licence
 
-<Licence> : voir [LICENSE](LICENSE).
+<Seulement si le dépôt a un fichier de licence.> <Licence> : voir [LICENSE](LICENSE).

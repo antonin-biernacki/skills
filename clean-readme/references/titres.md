@@ -7,38 +7,37 @@ Textes exacts à utiliser. Les titres de niveau 2 du README sont pris uniquement
 Première ligne du README, toujours en ASCII et en français, quelle que soit la langue du README :
 
 ```markdown
-<!-- clean-readme: type=recherche; langue=fr; v=1 -->
+<!-- clean-readme: type=recherche; langue=fr; v=2 -->
 ```
 
 | Clé | Valeurs | Rôle |
 |---|---|---|
-| `type` | `realisation`, `outil`, `recherche`, `recueil` | Type confirmé par l'utilisateur |
+| `type` | `realisation`, `outil`, `recherche`, `recueil` | Type retenu |
 | `langue` | `fr`, `en` | Langue de tous les fichiers du dépôt |
-| `v` | entier, actuellement `1` | Version des règles. Plus ancienne que celle du skill : proposer une refonte |
-| `licence` | `non` | Présent seulement si l'utilisateur a refusé d'ajouter une licence. Le retirer si une licence apparaît |
+| `v` | entier, actuellement `2` | Version des règles. Plus ancienne que celle du skill : proposer une refonte |
 
 ## Bloc d'état
 
 Une citation, juste après la description.
 
 ```markdown
-> **État** : En pause (mis à jour le 2026-01-15). La communication avec le capteur fonctionne, mais les mesures ne sont pas encore enregistrées. Reprise à la réception d'une nouvelle carte.
+> **État** : En pause. La communication avec le capteur fonctionne, mais les mesures ne sont pas encore enregistrées. Reprise à la réception d'une nouvelle carte.
 ```
 
 Avec une version :
 
 ```markdown
-> **État** : Terminé (mis à jour le 2026-01-15, version 1.2.0 du 2026-01-10).
+> **État** : Terminé (version 1.2.0 du 2026-01-10).
 ```
 
 En anglais :
 
 ```markdown
-> **Status**: Paused (updated 2026-01-15). Sensor communication works, but measurements are not recorded yet. Work resumes when a new board arrives.
-> **Status**: Done (updated 2026-01-15, version 1.2.0 of 2026-01-10).
+> **Status**: Paused. Sensor communication works, but measurements are not recorded yet. Work resumes when a new board arrives.
+> **Status**: Done (version 1.2.0 of 2026-01-10).
 ```
 
-- La date est celle du jour, lue avec `date +%F`. Elle change seulement si le contenu change.
+- Pas de date de mise à jour : l'historique git la donne déjà, et elle se périme.
 - La version et sa date viennent des tags git ou des releases, jamais d'une estimation.
 
 ## États
@@ -67,10 +66,10 @@ Dans un tableau d'avancement du README, la colonne État utilise du texte : Fait
 | 2 | Fonctionnalités | Features | Réalisation, Outil |
 | 2 | Avancement | Progress | Réalisation, Recherche |
 | 2 | Limites | Limitations | Tous |
-| 2 | Crédits | Credits | Tous |
+| 2 | Crédits | Credits | Tous, seulement si l'utilisateur l'écrit |
 | 2 | Références | References | Tous |
 | 3 | Citer ce travail | Citation | Sous Références, recherche académique |
-| 2 | Licence | License | Tous |
+| 2 | Licence | License | Tous, seulement si le dépôt a un fichier de licence |
 
 ## README : titres propres à un type
 

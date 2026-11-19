@@ -1,9 +1,9 @@
-<!-- clean-readme: type=recueil; langue=fr; v=1 -->
+<!-- clean-readme: type=recueil; langue=fr; v=2 -->
 # <Nom lisible du recueil>
 
 <Ce que contient le dépôt, dans quel cadre, et pour qui, en 2 à 4 phrases.>
 
-> **État** : <État> (mis à jour le <AAAA-MM-JJ>).
+> **État** : <État>.
 
 ## Sommaire
 
@@ -11,7 +11,6 @@
 - [Index](#index)
 - [Modèle](#modèle)
 - [Outils utilisés](#outils-utilisés)
-- [Crédits](#crédits)
 - [Licence](#licence)
 
 ## Organisation du dépôt
@@ -35,10 +34,6 @@ Chaque nouvelle entrée part du modèle [<modele>.md](<modele>.md).
 
 - <Outil, version>
 
-## Crédits
-
-- <Auteurs, encadrants, sources>
-
 ## Licence
 
-<Licence> : voir [LICENSE](LICENSE).
+<Seulement si le dépôt a un fichier de licence.> <Licence> : voir [LICENSE](LICENSE).

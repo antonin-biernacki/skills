@@ -1,6 +1,6 @@
 ---
 name: clean-readme
-description: Crée, refond ou met à jour le README d'un dépôt et ses fichiers annexes (ROADMAP.md, RESULTATS.md, docs/) selon des règles fixes - type de projet (réalisation, outil, recherche, recueil), bloc d'état daté, 200 lignes au maximum, titres fixes, rien d'inventé, vérification par script. À utiliser quand l'utilisateur appelle /clean-readme, demande d'écrire, refaire, nettoyer ou mettre à jour un README (write, clean up or update a README), ou donne une information à ranger dans un dépôt déjà suivi (nouvel essai, nouveau résultat, étape terminée, projet en pause).
+description: Crée, refond ou met à jour le README d'un dépôt et ses fichiers annexes (ROADMAP.md, RESULTATS.md, docs/) selon des règles fixes - type de projet (réalisation, outil, recherche, recueil), bloc d'état, 200 lignes au maximum, titres fixes, rien d'inventé, vérification par script. À utiliser quand l'utilisateur appelle /clean-readme, demande d'écrire, refaire, nettoyer ou mettre à jour un README (write, clean up or update a README), ou donne une information à ranger dans un dépôt déjà suivi (nouvel essai, nouveau résultat, étape terminée, projet en pause).
 ---
 
 # clean-readme
@@ -32,7 +32,7 @@ Fichiers de référence, à lire quand ils servent :
 | README sans commentaire `clean-readme` en première ligne | Refonte |
 | README avec ce commentaire | Mise à jour |
 
-Si l'utilisateur donne une information à ranger alors que le README n'a pas le commentaire, proposer d'abord la refonte. S'il refuse, faire seulement l'ajout demandé, sans restructurer et sans ajouter le commentaire.
+Si l'utilisateur donne une information à ranger alors que le README n'a pas le commentaire, faire seulement l'ajout demandé, sans restructurer et sans ajouter le commentaire. Signaler dans le bilan qu'une refonte est possible.
 
 ## Lecture du dépôt
 
@@ -45,48 +45,60 @@ Ne pas lire tout le code d'un gros dépôt. Lire dans l'ordre :
 5. l'historique git et les tags, si c'est un dépôt git ;
 6. le reste du code seulement si une section en a besoin.
 
-Lire aussi la date du jour : `date +%F`. Ne jamais l'estimer.
+Pour dater un essai ou un résultat, lire la date du jour avec `date +%F`. Ne jamais l'estimer.
 
 ## Mode création
 
 1. Lire le dépôt.
 2. Déterminer le type et l'état avec `references/detection.md`.
-3. Envoyer **un seul message** qui regroupe :
-   - le type et l'état proposés, avec les indices trouvés et l'autre possibilité s'il y en a une ;
-   - les questions sur ce qui manque : raison de l'état, résultats, nom lisible du projet s'il n'est pas évident, licence si absente (sauf `licence=non`) ;
-   - le plan : sections prévues, sections libres éventuelles, fichiers qui seront créés.
-4. Attendre la réponse. Rédiger à partir du modèle du type dans `templates/` et de `references/structure.md`. Retirer les sections sans contenu réel, et leurs lignes dans le sommaire.
+3. Poser une question seulement si elle bloque l'écriture (voir "Questions"). Sinon, écrire directement.
+4. Rédiger à partir du modèle du type dans `templates/` et de `references/structure.md`. Retirer les sections sans contenu réel, et leurs lignes dans le sommaire.
 5. Lancer les vérifications.
-6. Présenter le bilan des fichiers créés et de ce qui manque encore (captures à faire, informations à fournir).
+6. Présenter le bilan (voir "Bilan").
 
 ## Mode refonte
 
 1. Lire le dépôt et le README existant.
-2. Associer chaque section existante à la nouvelle structure (voir les correspondances dans `references/structure.md`).
-3. Repérer les informations qui semblent périmées : contredites par le code, par un autre passage ou par l'historique.
-4. Envoyer **un seul message** qui regroupe :
-   - le type et l'état proposés, avec les indices ;
-   - le plan : pour chaque section existante, gardée, renommée, fusionnée ou déplacée, et vers quel fichier ;
-   - les informations qui semblent périmées, avec pour chacune le choix : supprimer, corriger, ou déplacer dans RESULTATS.md (pistes écartées) ;
-   - les questions sur ce qui manque.
-5. Attendre la réponse, puis rédiger. Toute l'information encore valable est conservée, dans le README ou dans un fichier annexe.
-6. Lancer les vérifications.
-7. Présenter le bilan : ce qui a été déplacé et où, ce qui manque encore.
+2. Déterminer le type et l'état. Le README existant prime sur les autres indices.
+3. Associer chaque section existante à la nouvelle structure (voir les correspondances dans `references/structure.md`).
+4. Poser une question seulement si elle bloque l'écriture. Sinon, rédiger directement. Toute l'information est conservée, dans le README ou dans un fichier annexe. Une section Crédits déjà écrite est gardée telle quelle.
+5. Lancer les vérifications.
+6. Présenter le bilan, avec en plus ce qui a été déplacé et vers quel fichier, et les passages qui semblent périmés (contredits par le code ou par l'historique), sans les supprimer.
+
+## Questions
+
+Le skill pose le moins de questions possible : au plus un message court, et seulement si l'information bloque l'écriture.
+
+- Le type est ambigu : deux types ont des indices forts, ou aucun indice n'est exploitable.
+- L'état est En pause ou Arrêté, et aucune source ne donne la raison.
+- Un résultat de recherche est annoncé sans chiffre ni fichier qui le prouve.
+
+Tout le reste est décidé par le skill et annoncé dans le bilan. L'utilisateur corrige ensuite s'il le souhaite.
+
+## Bilan
+
+À la fin, un message court qui donne :
+
+- le type et l'état retenus, avec les indices principaux ;
+- les sections libres ajoutées, s'il y en a ;
+- les fichiers créés ou modifiés ;
+- ce qui manque encore : captures à faire, informations à fournir ;
+- les alertes du script qui ont été gardées, avec leur justification.
 
 ## Mode mise à jour
 
-Lire le type, la langue et la version des règles dans le commentaire en tête. Si `v` est inférieur à 1, proposer une refonte. Sinon, ranger l'information sans plan préalable :
+Lire le type, la langue et la version des règles dans le commentaire en tête. Si `v` est inférieur à 2, proposer une refonte. Sinon, ranger l'information sans plan préalable :
 
 | Information reçue | Où elle va |
 |---|---|
 | Nouvel essai | RESULTATS.md, tableau des essais, avec le numéro suivant. Créer le fichier s'il n'existe pas |
 | Nouveau résultat consolidé | RESULTATS.md, nouvelle section `### Rn`, et une ligne dans Résultats principaux du README s'il est important |
 | Étape terminée ou commencée | ROADMAP.md, puis le résumé d'avancement du README |
-| Changement d'état | Bloc d'état du README, avec la date du jour |
+| Changement d'état | Bloc d'état du README |
 | Projet qui a changé de nature (preuve de concept devenue stable) | Proposer le nouveau type. Après accord, restructurer et mettre à jour le commentaire |
 | Nouvelle fonctionnalité ou commande | Section correspondante du README |
 
-Lancer quand même toutes les vérifications. Si le README a été modifié à la main et ne respecte plus les règles, signaler les écarts et proposer de les corriger. Terminer par le bilan des modifications.
+Lancer quand même toutes les vérifications. Si le README a été modifié à la main et ne respecte plus les règles, corriger les écarts de forme relevés par le script et les citer dans le bilan. Terminer par le bilan des modifications.
 
 ## Fichiers produits
 
@@ -95,7 +107,7 @@ Au plus 5 fichiers de documentation créés par le skill, README compris :
 | Fichier | Quand le créer |
 |---|---|
 | `README.md` | Toujours |
-| `ROADMAP.md` | Roadmap déjà présente, demande de l'utilisateur, ou avancement de plus de 10 lignes dans le README (sur proposition) |
+| `ROADMAP.md` | Roadmap déjà présente, demande de l'utilisateur, ou avancement de plus de 10 lignes dans le README |
 | `RESULTATS.md` (`RESULTS.md` en anglais) | Recherche, dès le premier résultat ou le premier essai |
 | `docs/GUIDE.md` | README de plus de 200 lignes : installation détaillée, configuration, matériel |
 | `docs/FONCTIONNEMENT.md` (`docs/HOW-IT-WORKS.md`) | README de plus de 200 lignes : architecture, fonctionnement interne |
@@ -114,7 +126,7 @@ Dans l'ordre : langue demandée par l'utilisateur, langue du commentaire en têt
 ### Style
 
 - Phrases claires, précises et courtes : une idée par phrase.
-- Pas de ton commercial. Mots à éviter : puissant, simple, facile, simplement, il suffit de, robuste, moderne, incontournable, révolutionnaire (et leurs équivalents anglais). Acceptés pour un nom propre (Simple DirectMedia Layer) ou au sens littéral ("un simple fichier texte").
+- Pas de ton commercial. Mots à éviter : puissant, facile, simplement, il suffit de, robuste, moderne, incontournable, révolutionnaire (et leurs équivalents anglais). Acceptés pour un nom propre ou au sens littéral.
 - "Je" pour un projet seul, "nous" pour une équipe, la même personne partout.
 
 ### Caractères
@@ -132,7 +144,7 @@ Interdits dans le README et RESULTATS.md. Dans ROADMAP.md, seulement ⬜, 🟡 e
 ### Forme Markdown
 
 - Un seul titre de niveau 1 (nom lisible du projet). Sections en niveau 2, sous-sections en niveau 3, jamais plus profond.
-- Titres de niveau 2 pris dans `references/titres.md`, plus au plus 2 sections libres justifiées par le contenu, annoncées dans le plan, placées près de la section fixe la plus proche et avant la fin commune.
+- Titres de niveau 2 pris dans `references/titres.md`, plus au plus 2 sections libres justifiées par le contenu, signalées dans le bilan, placées près de la section fixe la plus proche et avant la fin commune.
 - Blocs de code toujours avec un langage. Commandes copiables, sans `$` devant. Sortie dans un bloc `text` séparé.
 - Images avec un texte alternatif, chemins relatifs.
 - Liens relatifs pour les fichiers du dépôt.
@@ -141,11 +153,11 @@ Interdits dans le README et RESULTATS.md. Dans ROADMAP.md, seulement ⬜, 🟡 e
 
 ### Fiabilité
 
-- Ne jamais inventer un résultat, un chiffre, une date, une commande, une version ou un état. Demander. Une date inconnue s'écrit "inconnue".
+- Ne jamais inventer un résultat, un chiffre, une date, une commande, une version ou un état. Laisser l'information de côté et la signaler dans le bilan, ou demander si elle bloque l'écriture. Une date inconnue s'écrit "inconnue".
 - Les commandes du projet (cibles Makefile, scripts, points d'entrée) doivent exister dans le dépôt. Les outils externes utilisés figurent dans les prérequis.
 - Les liens, ancres et images visent des fichiers qui existent et qui sont suivis par git.
 - Si l'aperçu demande des captures absentes, lister celles à faire au lieu de laisser un lien vide.
-- Ne rien perdre : un contenu retiré du README est déplacé dans un fichier annexe, sauf une information périmée dont l'utilisateur a validé la suppression.
+- Ne rien perdre : un contenu retiré du README est déplacé dans un fichier annexe.
 
 ### Données personnelles
 
@@ -181,8 +193,9 @@ Le skill vérifie lui-même ce que le script ne peut pas juger :
 ## Ce que le skill ne fait pas
 
 - Il ne commit pas et ne pousse pas.
-- Il ne supprime pas de contenu sans le déplacer, sauf une information périmée validée par l'utilisateur.
+- Il ne supprime pas de contenu sans le déplacer.
 - Il ne modifie pas le code du projet.
 - Il n'exécute pas les commandes du projet, sauf demande : il vérifie seulement qu'elles existent.
 - Il ne gère pas le `CHANGELOG.md`, ni les README en plusieurs langues (`README.en.md`).
-- Il ne crée pas de fichier `LICENSE` sans accord.
+- Il ne crée pas de fichier `LICENSE` et ne propose pas de licence. La section Licence n'existe que si le dépôt a déjà un fichier de licence.
+- Il n'écrit pas de section Crédits : l'utilisateur décide de l'ajouter. Il garde celle qui existe déjà.

@@ -1,9 +1,9 @@
-<!-- clean-readme: type=realisation; langue=fr; v=1 -->
+<!-- clean-readme: type=realisation; langue=fr; v=2 -->
 # <Nom lisible du projet>
 
 <Ce qu'est le projet, avec quoi il est fait et à quoi il sert, en 2 à 4 phrases.>
 
-> **État** : <État> (mis à jour le <AAAA-MM-JJ>). <Précision si l'état l'exige.>
+> **État** : <État>. <Précision si l'état l'exige.>
 
 ## Sommaire
 
@@ -18,7 +18,6 @@
 - [Déploiement](#déploiement)
 - [Fonctionnement interne](#fonctionnement-interne)
 - [Limites](#limites)
-- [Crédits](#crédits)
 - [Références](#références)
 - [Licence](#licence)
 
@@ -79,14 +78,10 @@
 
 - <Ce qui ne marche pas ou est restreint>
 
-## Crédits
-
-- <Auteurs, équipe, projets réutilisés avec leur licence>
-
 ## Références
 
 - <Documentation, articles, projets liés>
 
 ## Licence
 
-<Licence> : voir [LICENSE](LICENSE).
+<Seulement si le dépôt a un fichier de licence.> <Licence> : voir [LICENSE](LICENSE).

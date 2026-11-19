@@ -1,9 +1,9 @@
-<!-- clean-readme: type=recueil; langue=fr; v=1 -->
+<!-- clean-readme: type=recueil; langue=fr; v=2 -->
 # Bibliothèque de skills
 
 Collection de skills au format Agent Skills. Chaque skill est un dossier autonome : un fichier `SKILL.md` qui décrit quand et comment l'utiliser, accompagné si besoin de fichiers de référence, de modèles et de scripts.
 
-> **État** : En cours (mis à jour le 2026-11-19). Le premier skill, clean-readme, est écrit et en cours de test.
+> **État** : En cours. Le premier skill, clean-readme, est écrit et en cours de test.
 
 ## Organisation du dépôt
 

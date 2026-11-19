@@ -1,9 +1,9 @@
-<!-- clean-readme: type=recherche; langue=fr; v=1 -->
+<!-- clean-readme: type=recherche; langue=fr; v=2 -->
 # <Nom lisible du projet>
 
 <L'objectif de la recherche et l'avancement en bref, en 2 à 4 phrases.>
 
-> **État** : <État> (mis à jour le <AAAA-MM-JJ>). <Précision si l'état l'exige.>
+> **État** : <État>. <Précision si l'état l'exige.>
 
 ## Avertissement
 
@@ -21,7 +21,6 @@
 - [Matériel](#matériel)
 - [Questions ouvertes](#questions-ouvertes)
 - [Limites](#limites)
-- [Crédits](#crédits)
 - [Références](#références)
 - [Licence](#licence)
 
@@ -70,10 +69,6 @@
 
 - <Ce qui ne marche pas aujourd'hui>
 
-## Crédits
-
-- <Auteurs, projets réutilisés avec leur licence>
-
 ## Références
 
 - <Articles, documentation, projets liés>
@@ -86,4 +81,4 @@
 
 ## Licence
 
-<Licence> : voir [LICENSE](LICENSE).
+<Seulement si le dépôt a un fichier de licence.> <Licence> : voir [LICENSE](LICENSE).

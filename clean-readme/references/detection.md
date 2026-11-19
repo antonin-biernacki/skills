@@ -1,6 +1,6 @@
 # Détection du type et de l'état
 
-Le skill ne décide jamais seul : il propose un type et un état, montre les indices, puis attend la confirmation de l'utilisateur.
+Le skill choisit le type et l'état à partir des indices, et les annonce dans le bilan. Il ne pose la question que si le cas est ambigu.
 
 ## Les 4 types
 
@@ -36,7 +36,7 @@ Un projet inachevé n'est pas forcément de la recherche. Objectif connu et trav
 ## Indices par type
 
 - Un indice fort suffit presque à lui seul. Un indice faible ne compte que s'il s'ajoute à d'autres.
-- Si deux types ont des indices forts, présenter les deux et demander.
+- Si deux types ont des indices forts, demander.
 - Les indices qui demandent une API d'hébergement (GitHub, GitLab) ne servent que si l'information est accessible. Le skill doit fonctionner hors ligne.
 - Si le dossier n'est pas un dépôt git, se passer des indices tirés de l'historique et des tags.
 
@@ -84,7 +84,7 @@ Un projet inachevé n'est pas forcément de la recherche. Objectif connu et trav
 |---|---|
 | Site web (portfolio, site de présentation, blog, application web) | Réalisation. Le README dit ce qu'est le site, où le voir en ligne, comment le lancer en local et comment le déployer. Le contenu publié n'est pas recopié. |
 | Thème ou modèle de site fait pour être réutilisé | Outil |
-| Code de recherche publié pour que d'autres l'utilisent | Outil si le README sert surtout à l'utiliser, Recherche si son contenu principal est ce qui a été trouvé. Demander. |
+| Code de recherche publié pour que d'autres l'utilisent | Outil si le README sert surtout à l'utiliser, Recherche si son contenu principal est ce qui a été trouvé. |
 | Preuve de concept devenue fonctionnelle et stable | Réalisation ou Outil. Proposer le changement de type. |
 | Dépôt qui contient plusieurs projets indépendants | Recueil, avec un index des projets |
 | Configuration personnelle (dotfiles) | Outil s'il fournit un script d'installation, Recueil sinon |
@@ -94,11 +94,9 @@ Un projet inachevé n'est pas forcément de la recherche. Objectif connu et trav
 
 ## Indices pour l'état
 
-Toujours soumis à confirmation :
-
 - ce que dit le README existant prime sur les indices suivants ;
 - dépôt archivé, si l'information est accessible : Arrêté ou Terminé ;
-- aucun commit depuis plus de 6 mois : proposer En pause ou Arrêté, et demander la raison ;
+- aucun commit depuis plus de 6 mois : En pause ou Arrêté. Demander la raison seulement si aucune source ne la donne ;
 - tags de version récents et stables : Terminé ou En cours, avec la dernière version ;
 - mots "WIP", "en cours", "TODO" nombreux dans le README : En cours ou Expérimental.
 
@@ -110,11 +108,9 @@ git tag --sort=-creatordate | head -5
 git log --oneline | wc -l
 ```
 
-## Forme de la proposition
+## Forme dans le bilan
 
 ```text
-Type proposé : Recherche
-Indices : dossier runs/ avec 12 sorties d'expériences, captures .pcap, le README parle de preuve de concept.
-Autre possibilité : Réalisation, si l'objectif est atteint et qu'il ne reste qu'à finir.
-État proposé : En pause, dernier commit il y a 7 mois. Quelle est la raison ?
+Type : Recherche (dossier runs/ avec 12 sorties d'expériences, captures .pcap, le README parle de preuve de concept).
+État : En pause (dernier commit il y a 7 mois, raison donnée dans le README).
 ```
