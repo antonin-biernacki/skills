@@ -3,7 +3,7 @@
 
 Collection de skills au format Agent Skills. Chaque skill est un dossier autonome : un fichier `SKILL.md` qui décrit quand et comment l'utiliser, accompagné si besoin de fichiers de référence, de modèles et de scripts.
 
-> **État** : En cours. Le premier skill, clean-readme, est écrit et en cours de test.
+> **État** : En cours. Le premier skill, clean-readme, est terminé.
 
 ## Organisation du dépôt
 
@@ -23,7 +23,7 @@ Seul `SKILL.md` est obligatoire. Les autres dossiers n'existent que si le skill 
 
 | Skill | Rôle | État |
 |---|---|---|
-| [clean-readme](clean-readme/) | Crée, refond et met à jour le README d'un dépôt et ses fichiers annexes (feuille de route, résultats de recherche), avec un script de vérification | Expérimental |
+| [clean-readme](clean-readme/) | Crée, refond et met à jour le README d'un dépôt et ses fichiers annexes (feuille de route, résultats de recherche), avec un script de vérification | Terminé |
 
 ## Installation
 
